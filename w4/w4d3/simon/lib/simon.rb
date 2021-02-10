@@ -28,7 +28,6 @@ class Simon
 
   def show_sequence
     add_random_color
-    @seq 
   end
 
   def require_sequence
@@ -36,7 +35,7 @@ class Simon
     seq.each do |color|
       user_color = gets.chomp
       if color[0] != user_color
-        game_over = true
+        @game_over = true
         break
       end
     end
@@ -44,20 +43,28 @@ class Simon
   end
 
   def add_random_color
-    seq << COLORS.sample 
+    seq << COLORS.sample # 有没有setter都可以这样写 因为不涉及reassign
   end
 
   def round_success_message
-    "Round successful. Here's the next sequence:"
+    puts "Round successful. Here's the next sequence:"
   end
 
   def game_over_message
-    puts "Game over! You made it #{@sequence_length - 1} rounds."
+    puts "Game over! You made it #{sequence_length - 1} rounds."
   end
 
   def reset_game
-    self.sequence_length = 1
-    @game_over = false 
+    @sequence_length = 1 # when we have setter, we can use self.gettername to modify
+    @game_over = false  # when we do not have setter, we can only use @var to modify
     @seq = []
   end
 end
+
+
+
+
+
+
+
+
