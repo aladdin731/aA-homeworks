@@ -20,7 +20,7 @@ class Simon
   def take_turn
     show_sequence
     require_sequence
-    unless game_over
+    unless game_over 
       round_success_message
       @sequence_length += 1
     end
