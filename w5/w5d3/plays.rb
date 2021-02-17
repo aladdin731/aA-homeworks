@@ -73,6 +73,8 @@ class Play
 end
 
 class Playwrite
+  attr_accessor :id, :name, :birth_year
+
 
   def self.all
     data = PlayDBConnection.instance.execute("SELECT * FROM playwrights")
@@ -86,7 +88,7 @@ class Playwrite
       WHERE name = ?
     SQL
     return nil if person.empty?
-    Play.new(person.first)
+    Playwrite.new(person.first)
   end
 
   def initialize(options)
@@ -108,7 +110,7 @@ class Playwrite
 
   def update
     raise "#{self} not in database" unless self.id
-    PlayDBConnection.instance.execute(<<-SQL, self.name, self.birth_year)
+    PlayDBConnection.instance.execute(<<-SQL, self.name, self.birth_year, self.id)
       UPDATE
         playwrights
       SET
