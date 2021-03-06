@@ -121,7 +121,7 @@ label {
     /* setting the column width ensures the columns won't collapse on each other */
     min-width: 550px
   }
-  
+
   nav  ul {
     display: none;
   }
